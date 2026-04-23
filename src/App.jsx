@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InvoiceList from "./pages/InvoiceList.jsx";
 import InvoiceDetail from "./pages/InvoiceDetails.jsx";
+import EditInvoice from "./pages/EditInvoice.jsx";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<InvoiceList />} />
         <Route path="/invoice/:id" element={<InvoiceDetail />} />
+        <Route path="/edit/:id" element={<EditInvoice />} />
       </Routes>
     </BrowserRouter>
   );

@@ -20,9 +20,23 @@ function InvoiceProvider({ children }) {
     );
   };
 
+  // ✏️ UPDATE (EDIT) FUNCTION
+  const updateInvoice = (id, updatedData) => {
+    setInvoices((prev) =>
+      prev.map((inv) =>
+        inv.id === id ? { ...inv, ...updatedData } : inv
+      )
+    );
+  };
+
   return (
     <InvoiceContext.Provider
-      value={{ invoices, deleteInvoice, markAsPaid }}
+      value={{
+        invoices,
+        deleteInvoice,
+        markAsPaid,
+        updateInvoice, // 🔥 IMPORTANT
+      }}
     >
       {children}
     </InvoiceContext.Provider>
