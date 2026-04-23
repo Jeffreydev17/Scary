@@ -6,13 +6,24 @@ export const InvoiceContext = createContext();
 function InvoiceProvider({ children }) {
   const [invoices, setInvoices] = useState(initialData);
 
-  // DELETE FUNCTION
+  // 🗑 DELETE FUNCTION
   const deleteInvoice = (id) => {
     setInvoices((prev) => prev.filter((inv) => inv.id !== id));
   };
 
+  // ✅ MARK AS PAID FUNCTION
+  const markAsPaid = (id) => {
+    setInvoices((prev) =>
+      prev.map((inv) =>
+        inv.id === id ? { ...inv, status: "paid" } : inv
+      )
+    );
+  };
+
   return (
-    <InvoiceContext.Provider value={{ invoices, deleteInvoice }}>
+    <InvoiceContext.Provider
+      value={{ invoices, deleteInvoice, markAsPaid }}
+    >
       {children}
     </InvoiceContext.Provider>
   );
